@@ -12,6 +12,7 @@ class Azkar extends Model
         'azkar-ar',
         'azkar-en',
         'status',
+        'note'
     ];
 
     public function emotion_alls()

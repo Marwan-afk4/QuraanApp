@@ -12,6 +12,7 @@ class Ayat extends Model
         'ayat-ar',
         'ayat-en',
         'status',
+        'note'
     ];
 
     public function emotion_alls()

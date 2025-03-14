@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AyatController extends Controller
 {
-    protected $updateAyat=['ayat_ar','ayat_en','status'];
+    protected $updateAyat=['ayat_ar','ayat_en','status','note'];
 
     public function getAyat(){
         $ayat = Ayat::all();
@@ -24,6 +24,7 @@ class AyatController extends Controller
             'ayat-ar' => 'required|string',
             'ayat-en' => 'required|string',
             'status' => 'required|integer|in:0,1',
+            'note'=>'sometimes|string',
         ]);
         if($validation->fails()){
             return response()->json(['errors'=>$validation->errors()],400);
@@ -49,6 +50,7 @@ class AyatController extends Controller
             'ayat-ar' => 'sometimes|string',
             'ayat-en' => 'sometimes|string',
             'status' => 'sometimes|integer|in:0,1',
+            'note'=>'sometimes|string',
         ]);
         if($validation->fails()){
             return response()->json(['errors'=>$validation->errors()]);

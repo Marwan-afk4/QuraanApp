@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AzkarController extends Controller
 {
-    protected $updateAzkar =['azkar_ar','azkar_en','status'];
+    protected $updateAzkar =['azkar_ar','azkar_en','status','note'];
 
     public function getAzkar(){
         $azkar = Azkar::all();
@@ -24,6 +24,7 @@ class AzkarController extends Controller
             'azkar-ar' => 'required|string',
             'azkar-en' => 'required|string',
             'status' => 'required|integer|in:0,1',
+            'note'=>'sometimes|string',
         ]);
         if($validation->fails()){
             return response()->json(['errors'=>$validation->errors()]);
@@ -49,6 +50,7 @@ class AzkarController extends Controller
             'azkar-ar' => 'sometimes|string',
             'azkar-en' => 'sometimes|string',
             'status' => 'sometimes|integer|in:0,1',
+            'note'=>'sometimes|string',
         ]);
         if($validation->fails()){
             return response()->json(['errors'=>$validation->errors()]);

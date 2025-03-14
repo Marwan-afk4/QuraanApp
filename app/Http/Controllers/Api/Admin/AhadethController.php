@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 class AhadethController extends Controller
 {
 
-    protected $updateAhadeth =['ahadeth_ar','ahadeth_en','status'];
+    protected $updateAhadeth =['ahadeth_ar','ahadeth_en','status','note'];
 
     public function getAhadeth(){
         $ahadeth = Ahadeth::all();
@@ -25,6 +25,7 @@ class AhadethController extends Controller
             'ahadeth-ar' => 'required|string',
             'ahadeth-en' => 'required|string',
             'status' => 'required|integer|in:0,1',
+            'note'=>'sometimes|string',
         ]);
         if($validation->fails()){
             return response()->json(['errors'=>$validation->errors()]);
@@ -60,6 +61,7 @@ class AhadethController extends Controller
             'ahadeth-ar' => 'sometimes|string',
             'ahadeth-en' => 'sometimes|string',
             'status' => 'sometimes|integer|in:0,1',
+            'note'=>'sometimes|string',
         ]);
         if($validation->fails()){
             return response()->json(['errors'=>$validation->errors()]);

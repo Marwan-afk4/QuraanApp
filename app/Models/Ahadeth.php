@@ -12,6 +12,7 @@ class Ahadeth extends Model
         'ahadeth-ar',
         'ahadeth-en',
         'status',
+        'note'
     ];
 
     public function emotion_alls()

@@ -108,4 +108,69 @@ class EmotionController extends Controller
         ];
         return response()->json($data);
     }
+
+    public function getemotionthings($emotion_id)
+{
+    $emotionRecords = EmotionAll::where('emotion_id', $emotion_id)
+        ->with('emotion', 'ayat', 'ad3ya', 'ahadeth', 'azkar')
+        ->get();
+
+    if ($emotionRecords->isEmpty()) {
+        return response()->json(['message' => 'No data found'], 404);
+    }
+
+    $formattedResponse = [
+        'emotion_id' => $emotionRecords[0]->emotion->id,
+        'emotion_name' => $emotionRecords[0]->emotion->emotion_name,
+        'ayat' => [],
+        'ad3ya' => [],
+        'ahadeth' => [],
+        'azkar' => []
+    ];
+
+    foreach ($emotionRecords as $record) {
+        if ($record->ayat) {
+            $formattedResponse['ayat'][] = [
+                'id' => $record->ayat->id,
+                'ayat-ar' => $record->ayat->{"ayat-ar"},
+                'ayat-en' => $record->ayat->{"ayat-en"},
+                'status' => $record->ayat->status,
+                'note' => $record->ayat->note
+            ];
+        }
+
+        if ($record->ad3ya) {
+            $formattedResponse['ad3ya'][] = [
+                'id' => $record->ad3ya->id,
+                'ad3ya-ar' => $record->ad3ya->{"ad3ya-ar"},
+                'ad3ya-en' => $record->ad3ya->{"ad3ya-en"},
+                'status' => $record->ad3ya->status,
+                'note' => $record->ad3ya->note
+            ];
+        }
+
+        if ($record->ahadeth) {
+            $formattedResponse['ahadeth'][] = [
+                'id' => $record->ahadeth->id,
+                'ahadeth-ar' => $record->ahadeth->{"ahadeth-ar"},
+                'ahadeth-en' => $record->ahadeth->{"ahadeth-en"},
+                'status' => $record->ahadeth->status,
+                'note' => $record->ahadeth->note
+            ];
+        }
+
+        if ($record->azkar) {
+            $formattedResponse['azkar'][] = [
+                'id' => $record->azkar->id,
+                'azkar-ar' => $record->azkar->{"azkar-ar"},
+                'azkar-en' => $record->azkar->{"azkar-en"},
+                'status' => $record->azkar->status,
+                'note' => $record->azkar->note
+            ];
+        }
+    }
+
+    return response()->json(['data'=>$formattedResponse]);
+}
+
 }

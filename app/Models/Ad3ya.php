@@ -12,6 +12,7 @@ class Ad3ya extends Model
         'ad3ya-ar',
         'ad3ya-en',
         'status',
+        'note'
     ];
 
     public function emotion_alls()
