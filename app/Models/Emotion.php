@@ -9,7 +9,8 @@ class Emotion extends Model
 
 
     protected $fillable =[
-        'emotion_name'
+        'emotion_name',
+        'emotion_limit'
     ];
 
     public function emotion_alls()

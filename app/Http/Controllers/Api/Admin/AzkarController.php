@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Azkar;
+use App\Models\AzkarCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -71,6 +72,22 @@ class AzkarController extends Controller
         $azkar->delete();
         $data = [
             'message' => 'Azkar Deleted Successfully',
+        ];
+        return response()->json($data);
+    }
+
+    public function getAzkarCategory($category_id){
+        $azkar = Azkar::where('category_id', $category_id)->get();
+        $data =[
+            'azkar'=>$azkar
+        ];
+        return response()->json($data);
+    }
+
+    public function getAzkarCategories(){
+        $azkar = AzkarCategory::all();
+        $data =[
+            'azkar_Categories'=>$azkar
         ];
         return response()->json($data);
     }

@@ -122,6 +122,7 @@ class EmotionController extends Controller
     $formattedResponse = [
         'emotion_id' => $emotionRecords[0]->emotion->id,
         'emotion_name' => $emotionRecords[0]->emotion->emotion_name,
+        'emotion_limit' => $emotionRecords[0]->emotion->emotion_limit,
         'ayat' => [],
         'ad3ya' => [],
         'ahadeth' => [],
@@ -164,6 +165,9 @@ class EmotionController extends Controller
                 'id' => $record->azkar->id,
                 'azkar-ar' => $record->azkar->{"azkar-ar"},
                 'azkar-en' => $record->azkar->{"azkar-en"},
+                'azkar_count' => $record->azkar->azkar_count,
+                'azkar_category_id' => $record->azkar->category_id,
+                'azkar_category_name' => $record->azkar->azkar_category->category_name,
                 'status' => $record->azkar->status,
                 'note' => $record->azkar->note
             ];

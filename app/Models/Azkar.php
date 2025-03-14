@@ -12,12 +12,19 @@ class Azkar extends Model
         'azkar_ar',
         'azkar_en',
         'status',
-        'note'
+        'note',
+        'azkar_count',
+        'category_id'
     ];
 
     public function emotion_alls()
     {
         return $this->hasMany(EmotionAll::class);
+    }
+
+    public function azkar_category()
+    {
+        return $this->belongsTo(AzkarCategory::class,'category_id');
     }
 
 }
