@@ -21,8 +21,8 @@ class AyatController extends Controller
 
     public function addAyat(Request $request){
         $validation = Validator::make($request->all(),[
-            'ayat-ar' => 'required|string',
-            'ayat-en' => 'required|string',
+            'ayat_ar' => 'required|string',
+            'ayat_en' => 'required|string',
             'status' => 'required|integer|in:0,1',
             'note'=>'sometimes|string',
         ]);
@@ -33,7 +33,8 @@ class AyatController extends Controller
         $ayat = Ayat::create([
             'ayat_ar' => $request->ayat_ar,
             'ayat_en' => $request->ayat_en,
-            'status' => $request->status,
+            'status' => (string)$request->status,
+            'note' => $request->note
         ]);
 
         $data = [
@@ -47,8 +48,8 @@ class AyatController extends Controller
     public function UpdateAyat(Request $request, $id){
         $ayat = Ayat::find($id);
         $validation = Validator::make($request->all(),[
-            'ayat-ar' => 'sometimes|string',
-            'ayat-en' => 'sometimes|string',
+            'ayat_ar' => 'sometimes|string',
+            'ayat_en' => 'sometimes|string',
             'status' => 'sometimes|integer|in:0,1',
             'note'=>'sometimes|string',
         ]);

@@ -9,8 +9,8 @@ class Azkar extends Model
 
 
     protected $fillable =[
-        'azkar-ar',
-        'azkar-en',
+        'azkar_ar',
+        'azkar_en',
         'status',
         'note'
     ];

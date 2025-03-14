@@ -9,8 +9,8 @@ class Ahadeth extends Model
 
 
     protected $fillable =[
-        'ahadeth-ar',
-        'ahadeth-en',
+        'ahadeth_ar',
+        'ahadeth_en',
         'status',
         'note'
     ];

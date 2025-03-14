@@ -9,8 +9,8 @@ class Ad3ya extends Model
 
 
     protected $fillable =[
-        'ad3ya-ar',
-        'ad3ya-en',
+        'ad3ya_ar',
+        'ad3ya_en',
         'status',
         'note'
     ];

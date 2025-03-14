@@ -22,8 +22,8 @@ class AhadethController extends Controller
 
     public function addAhadeth(Request $request){
         $validation = Validator::make($request->all(),[
-            'ahadeth-ar' => 'required|string',
-            'ahadeth-en' => 'required|string',
+            'ahadeth_ar' => 'required|string',
+            'ahadeth_en' => 'required|string',
             'status' => 'required|integer|in:0,1',
             'note'=>'sometimes|string',
         ]);
@@ -34,7 +34,8 @@ class AhadethController extends Controller
         $ahadeth = Ahadeth::create([
             'ahadeth_ar' => $request->ahadeth_ar,
             'ahadeth_en' => $request->ahadeth_en,
-            'status' => $request->status,
+            'status' => (string)$request->status,
+            'note' => $request->note
         ]);
 
         $data = [
@@ -58,8 +59,8 @@ class AhadethController extends Controller
     public function UpdateAhadeth(Request $request, $id){
         $ahadeth = Ahadeth::find($id);
         $validation = Validator::make($request->all(),[
-            'ahadeth-ar' => 'sometimes|string',
-            'ahadeth-en' => 'sometimes|string',
+            'ahadeth_ar' => 'sometimes|string',
+            'ahadeth_en' => 'sometimes|string',
             'status' => 'sometimes|integer|in:0,1',
             'note'=>'sometimes|string',
         ]);

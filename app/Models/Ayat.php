@@ -9,8 +9,8 @@ class Ayat extends Model
 
 
     protected $fillable =[
-        'ayat-ar',
-        'ayat-en',
+        'ayat_ar',
+        'ayat_en',
         'status',
         'note'
     ];

@@ -22,9 +22,9 @@ class Ad3yaController extends Controller
 
     public function addAd3ya(Request $request){
         $validation = Validator::make($request->all(),[
-            'ad3ya-ar' => 'required|string',
-            'ad3ya-en' => 'required|string',
-            'status' => 'required|integer|in:0,1',
+            'ad3ya_ar' => 'required|string',
+            'ad3ya_en' => 'required|string',
+            'status' => 'required|between:0,1',
             'note'=>'sometimes|string',
         ]);
         if($validation->fails()){
@@ -34,7 +34,8 @@ class Ad3yaController extends Controller
         $ad3ya = Ad3ya::create([
             'ad3ya_ar' => $request->ad3ya_ar,
             'ad3ya_en' => $request->ad3ya_en,
-            'status' => $request->status,
+            'status' => (string)$request->status,
+            'note' => $request->note
         ]);
 
         $data = [
@@ -57,8 +58,8 @@ class Ad3yaController extends Controller
     public function UpdateAd3ya(Request $request, $id){
         $ad3ya = Ad3ya::find($id);
         $validation = Validator::make($request->all(),[
-            'ad3ya-ar' => 'sometimes|string',
-            'ad3ya-en' => 'sometimes|string',
+            'ad3ya_ar' => 'sometimes|string',
+            'ad3ya_en' => 'sometimes|string',
             'status' => 'sometimes|integer|in:0,1',
             'note'=>'sometimes|string',
         ]);

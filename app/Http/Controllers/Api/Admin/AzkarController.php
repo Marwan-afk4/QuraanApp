@@ -21,8 +21,8 @@ class AzkarController extends Controller
 
     public function addAzkar(Request $request){
         $validation = Validator::make($request->all(),[
-            'azkar-ar' => 'required|string',
-            'azkar-en' => 'required|string',
+            'azkar_ar' => 'required|string',
+            'azkar_en' => 'required|string',
             'status' => 'required|integer|in:0,1',
             'note'=>'sometimes|string',
         ]);
@@ -33,7 +33,8 @@ class AzkarController extends Controller
         $azkar = Azkar::create([
             'azkar_ar' => $request->azkar_ar,
             'azkar_en' => $request->azkar_en,
-            'status' => $request->status,
+            'status' => (string)$request->status,
+            'note' => $request->note
         ]);
 
         $data = [
@@ -47,8 +48,8 @@ class AzkarController extends Controller
     public function UpdateAzkar(Request $request, $id){
         $azkar = Azkar::find($id);
         $validation = Validator::make($request->all(),[
-            'azkar-ar' => 'sometimes|string',
-            'azkar-en' => 'sometimes|string',
+            'azkar_ar' => 'sometimes|string',
+            'azkar_en' => 'sometimes|string',
             'status' => 'sometimes|integer|in:0,1',
             'note'=>'sometimes|string',
         ]);
