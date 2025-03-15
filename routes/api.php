@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Admin\AyatController;
 use App\Http\Controllers\Api\Admin\AzkarController;
 use App\Http\Controllers\Api\Admin\EmotionController;
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\User\UserController;
 use App\Models\Azkar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -78,4 +79,22 @@ Route::middleware(['auth:sanctum', 'IsAdmin'])->group(function () {
     Route::delete('/admin/EmotionAll/Delete/{id}', [EmotionController::class , 'deletEmotionAll']);
 
     Route::get('/admin/emotionThings/{emotion_id}', [EmotionController::class , 'getemotionthings']);
+});
+
+
+Route::middleware('UUIDAuth')->group(function () {
+
+    Route::get('/user/foryouPage', [UserController::class, 'foryouPage']);
+
+    Route::get('/user/getAd3ya', [UserController::class, 'getAd3ya']);
+
+    Route::get('/user/getAzkar', [UserController::class, 'getAzkar']);
+
+    Route::get('/user/getAhadeth', [UserController::class, 'getAhadeth']);
+
+    Route::get('/user/getAyat', [UserController::class, 'getAyat']);
+
+    Route::get('/user/getEmotions', [UserController::class, 'getEmotions']);
+
+    Route::get('/user/getemotionthings/{emotion_id}', [UserController::class, 'getemotionthings']);
 });
