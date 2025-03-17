@@ -97,4 +97,8 @@ Route::middleware('UUIDAuth')->group(function () {
     Route::get('/user/getEmotions', [UserController::class, 'getEmotions']);
 
     Route::get('/user/getemotionthings/{emotion_id}', [UserController::class, 'getemotionthings']);
+
+    Route::get('/user/getCategories', [UserController::class, 'getCategories']);
+
+    Route::get('/user/getAzkarCategory/{category_id}', [UserController::class, 'getAzkarCategory']);
 });

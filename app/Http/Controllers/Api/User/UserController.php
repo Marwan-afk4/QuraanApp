@@ -7,6 +7,7 @@ use App\Models\Ad3ya;
 use App\Models\Ahadeth;
 use App\Models\Ayat;
 use App\Models\Azkar;
+use App\Models\AzkarCategory;
 use App\Models\Emotion;
 use App\Models\EmotionAll;
 use Illuminate\Http\Request;
@@ -93,8 +94,8 @@ class UserController extends Controller
         if ($record->ayat) {
             $formattedResponse['ayat'][] = [
                 'id' => $record->ayat->id,
-                'ayat-ar' => $record->ayat->{"ayat-ar"},
-                'ayat-en' => $record->ayat->{"ayat-en"},
+                'ayat_ar' => $record->ayat->{"ayat_ar"},
+                'ayat_en' => $record->ayat->{"ayat_en"},
                 'status' => $record->ayat->status,
                 'note' => $record->ayat->note
             ];
@@ -103,8 +104,8 @@ class UserController extends Controller
         if ($record->ad3ya) {
             $formattedResponse['ad3ya'][] = [
                 'id' => $record->ad3ya->id,
-                'ad3ya-ar' => $record->ad3ya->{"ad3ya-ar"},
-                'ad3ya-en' => $record->ad3ya->{"ad3ya-en"},
+                'ad3ya_ar' => $record->ad3ya->{"ad3ya_ar"},
+                'ad3ya_en' => $record->ad3ya->{"ad3ya_en"},
                 'status' => $record->ad3ya->status,
                 'note' => $record->ad3ya->note
             ];
@@ -113,8 +114,8 @@ class UserController extends Controller
         if ($record->ahadeth) {
             $formattedResponse['ahadeth'][] = [
                 'id' => $record->ahadeth->id,
-                'ahadeth-ar' => $record->ahadeth->{"ahadeth-ar"},
-                'ahadeth-en' => $record->ahadeth->{"ahadeth-en"},
+                'ahadeth_ar' => $record->ahadeth->{"ahadeth_ar"},
+                'ahadeth_en' => $record->ahadeth->{"ahadeth_en"},
                 'status' => $record->ahadeth->status,
                 'note' => $record->ahadeth->note
             ];
@@ -123,8 +124,8 @@ class UserController extends Controller
         if ($record->azkar) {
             $formattedResponse['azkar'][] = [
                 'id' => $record->azkar->id,
-                'azkar-ar' => $record->azkar->{"azkar-ar"},
-                'azkar-en' => $record->azkar->{"azkar-en"},
+                'azkar_ar' => $record->azkar->{"azkar_ar"},
+                'azkar_en' => $record->azkar->{"azkar_en"},
                 'azkar_count' => $record->azkar->azkar_count,
                 'azkar_category_id' => $record->azkar->category_id,
                 'azkar_category_name' => $record->azkar->azkar_category->category_name,
@@ -136,4 +137,19 @@ class UserController extends Controller
 
     return response()->json(['data'=>$formattedResponse]);
 }
-}
+
+    public function getCategories(){
+        $categories = AzkarCategory::all();
+        $data =[
+            'categories'=>$categories
+        ];
+        return response()->json($data);
+    }
+
+    public function getAzkarCategory($category_id){
+        $azkar = Azkar::where('category_id', $category_id)->get();
+        $data =[
+            'azkar'=>$azkar
+        ];
+        return response()->json($data);
+    }}
