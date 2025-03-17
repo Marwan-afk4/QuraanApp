@@ -127,8 +127,8 @@ class UserController extends Controller
                 'azkar_ar' => $record->azkar->{"azkar_ar"},
                 'azkar_en' => $record->azkar->{"azkar_en"},
                 'azkar_count' => $record->azkar->azkar_count,
-                'azkar_category_id' => $record->azkar->category_id,
-                'azkar_category_name' => $record->azkar->azkar_category->category_name,
+                'category_id' => $record->azkar->category_id,
+                'category_name' => $record->azkar->azkar_category->category_name,
                 'status' => $record->azkar->status,
                 'note' => $record->azkar->note
             ];
