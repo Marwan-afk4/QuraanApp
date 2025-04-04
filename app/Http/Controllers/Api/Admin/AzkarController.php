@@ -25,7 +25,7 @@ class AzkarController extends Controller
             'azkar_ar' => 'required|string',
             'azkar_en' => 'required|string',
             'status' => 'required|integer|in:0,1',
-            'note'=>'sometimes|string',
+            'note'=>'nullable|string',
         ]);
         if($validation->fails()){
             return response()->json(['errors'=>$validation->errors()]);
