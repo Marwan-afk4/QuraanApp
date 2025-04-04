@@ -24,7 +24,7 @@ class AyatController extends Controller
             'ayat_ar' => 'required|string',
             'ayat_en' => 'required|string',
             'status' => 'required|integer|in:0,1',
-            'note'=>'sometimes|string',
+            'note'=>'nullable|string',
         ]);
         if($validation->fails()){
             return response()->json(['errors'=>$validation->errors()],400);

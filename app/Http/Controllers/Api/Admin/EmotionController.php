@@ -91,11 +91,11 @@ class EmotionController extends Controller
     public function updateEmotionAll(Request $request, $id){
         $emotion = EmotionAll::find($id);
         $validation = Validator::make($request->all(),[
-            'emotion_id' => 'sometimes|integer|exists:emotions,id',
-            'ayat_id' => 'sometimes|integer|exists:ayats,id',
-            'ad3ya_id' => 'sometimes|integer|exists:ad3yas,id',
-            'ahadeth_id' => 'sometimes|integer|exists:ahadeths,id',
-            'azkar_id' => 'sometimes|integer|exists:azkars,id',
+            'emotion_id' => 'nullable|integer|exists:emotions,id',
+            'ayat_id' => 'nullable|integer|exists:ayats,id',
+            'ad3ya_id' => 'nullable|integer|exists:ad3yas,id',
+            'ahadeth_id' => 'nullable|integer|exists:ahadeths,id',
+            'azkar_id' => 'nullable|integer|exists:azkars,id',
         ]);
         if($validation->fails()){
             return response()->json(['errors'=>$validation->errors()]);

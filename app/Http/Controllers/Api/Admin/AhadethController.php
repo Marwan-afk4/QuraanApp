@@ -25,7 +25,7 @@ class AhadethController extends Controller
             'ahadeth_ar' => 'required|string',
             'ahadeth_en' => 'required|string',
             'status' => 'required|integer|in:0,1',
-            'note'=>'sometimes|string',
+            'note'=>'nullable|string',
         ]);
         if($validation->fails()){
             return response()->json(['errors'=>$validation->errors()]);
@@ -59,10 +59,10 @@ class AhadethController extends Controller
     public function UpdateAhadeth(Request $request, $id){
         $ahadeth = Ahadeth::find($id);
         $validation = Validator::make($request->all(),[
-            'ahadeth_ar' => 'sometimes|string',
-            'ahadeth_en' => 'sometimes|string',
-            'status' => 'sometimes|integer|in:0,1',
-            'note'=>'sometimes|string',
+            'ahadeth_ar' => 'nullable|string',
+            'ahadeth_en' => 'nullable|string',
+            'status' => 'nullable|integer|in:0,1',
+            'note'=>'nullable|string',
         ]);
         if($validation->fails()){
             return response()->json(['errors'=>$validation->errors()]);

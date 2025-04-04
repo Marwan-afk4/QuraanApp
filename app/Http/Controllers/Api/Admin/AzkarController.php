@@ -49,9 +49,9 @@ class AzkarController extends Controller
     public function UpdateAzkar(Request $request, $id){
         $azkar = Azkar::find($id);
         $validation = Validator::make($request->all(),[
-            'azkar_ar' => 'sometimes|string',
-            'azkar_en' => 'sometimes|string',
-            'status' => 'sometimes|integer|in:0,1',
+            'azkar_ar' => 'nullable|string',
+            'azkar_en' => 'nullable|string',
+            'status' => 'nullable|integer|in:0,1',
             'note'=>'nullable|string',
         ]);
         if($validation->fails()){
