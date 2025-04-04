@@ -28,7 +28,7 @@ class Ad3yaController extends Controller
             'note'=>'nullable|string',
         ]);
         if($validation->fails()){
-            return response()->json(['errors'=>$validation->errors()]);
+            return response()->json(['errors'=>$validation->errors()],400);
         }
 
         $ad3ya = Ad3ya::create([
