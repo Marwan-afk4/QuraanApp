@@ -52,7 +52,7 @@ class AzkarController extends Controller
             'azkar_ar' => 'sometimes|string',
             'azkar_en' => 'sometimes|string',
             'status' => 'sometimes|integer|in:0,1',
-            'note'=>'sometimes|string',
+            'note'=>'nullable|string',
         ]);
         if($validation->fails()){
             return response()->json(['errors'=>$validation->errors()]);

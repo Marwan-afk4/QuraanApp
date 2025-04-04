@@ -25,7 +25,7 @@ class Ad3yaController extends Controller
             'ad3ya_ar' => 'required|string',
             'ad3ya_en' => 'required|string',
             'status' => 'required|between:0,1',
-            'note'=>'sometimes|string',
+            'note'=>'nullable|string',
         ]);
         if($validation->fails()){
             return response()->json(['errors'=>$validation->errors()]);
@@ -61,7 +61,7 @@ class Ad3yaController extends Controller
             'ad3ya_ar' => 'sometimes|string',
             'ad3ya_en' => 'sometimes|string',
             'status' => 'sometimes|integer|in:0,1',
-            'note'=>'sometimes|string',
+            'note'=>'nullable|string',
         ]);
         if($validation->fails()){
             return response()->json(['errors'=>$validation->errors()]);
