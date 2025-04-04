@@ -6,7 +6,9 @@ use App\Http\Controllers\Api\Admin\AyatController;
 use App\Http\Controllers\Api\Admin\AzkarController;
 use App\Http\Controllers\Api\Admin\CodeController;
 use App\Http\Controllers\Api\Admin\EmotionController;
+use App\Http\Controllers\Api\Admin\PaymentController;
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\User\PaymentController as UserPaymentController;
 use App\Http\Controllers\Api\User\UserController;
 use App\Models\Azkar;
 use Illuminate\Http\Request;
@@ -88,6 +90,12 @@ Route::middleware(['auth:sanctum', 'IsAdmin'])->group(function () {
     Route::post('/admin/code/add',[CodeController::class,'addCode']);
 
     Route::delete('/admin/delete/code/{id}',[CodeController::class,'deleteCode']);
+
+///////////////////////////////////////////////// Payments //////////////////////////////////////////////////
+
+    Route::get('/admin/getPayments', [PaymentController::class, 'getPayments']);
+
+    Route::delete('/admin/delete/payment/{id}', [PaymentController::class, 'deletePayment']);
 });
 
 
@@ -110,4 +118,6 @@ Route::middleware('UUIDAuth')->group(function () {
     Route::get('/user/getCategories', [UserController::class, 'getCategories']);
 
     Route::get('/user/getAzkarCategory/{category_id}', [UserController::class, 'getAzkarCategory']);
+
+    Route::post('/user/addPayment', [UserPaymentController::class, 'addPayment']);
 });
