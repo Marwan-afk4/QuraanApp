@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Admin\Ad3yaController;
 use App\Http\Controllers\Api\Admin\AhadethController;
 use App\Http\Controllers\Api\Admin\AyatController;
 use App\Http\Controllers\Api\Admin\AzkarController;
+use App\Http\Controllers\Api\Admin\CodeController;
 use App\Http\Controllers\Api\Admin\EmotionController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\User\UserController;
@@ -79,6 +80,14 @@ Route::middleware(['auth:sanctum', 'IsAdmin'])->group(function () {
     Route::delete('/admin/EmotionAll/Delete/{id}', [EmotionController::class , 'deletEmotionAll']);
 
     Route::get('/admin/emotionThings/{emotion_id}', [EmotionController::class , 'getemotionthings']);
+
+////////////////////////////////////////////// Code ////////////////////////////////////////////////////
+
+    Route::get('/admin/code/get',[CodeController::class,'getCode']);
+
+    Route::post('/admin/code/add',[CodeController::class,'addCode']);
+
+    Route::delete('/admin/delete/code/{id}',[CodeController::class,'deleteCode']);
 });
 
 
