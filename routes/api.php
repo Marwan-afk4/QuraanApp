@@ -101,6 +101,8 @@ Route::middleware(['auth:sanctum', 'IsAdmin'])->group(function () {
 
 Route::middleware('UUIDAuth')->group(function () {
 
+    Route::post('/user/addFCM',[UserController::class , 'addFCM']);
+
     Route::get('/user/foryouPage', [UserController::class, 'foryouPage']);
 
     Route::get('/user/getAd3ya', [UserController::class, 'getAd3ya']);

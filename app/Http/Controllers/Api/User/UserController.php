@@ -11,9 +11,23 @@ use App\Models\AzkarCategory;
 use App\Models\Emotion;
 use App\Models\EmotionAll;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
+    public function addFCM(Request $request){
+        $validation = Validator::make($request->all(), [
+            'fcm_token' => 'required',
+        ]);
+        if ($validation->fails()) {
+            return response()->json(['errors' => $validation->errors()]);
+        }
+        $user = $request->user();
+        $user->fcm_token = $request->fcm_token;
+        $user->save();
+        return response()->json(['message' => 'FCM token added successfully']);
+    }
 
     public function getAd3ya(){
         $ad3ya = Ad3ya::all();

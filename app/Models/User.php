@@ -17,7 +17,8 @@ class User extends Authenticatable
         'password',
         'phone',
         'role',
-        'uuid'
+        'uuid',
+        'fcm_token'
     ];
 
     protected $hidden = [

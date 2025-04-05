@@ -11,8 +11,6 @@ use Carbon\Carbon;
 class PaymentController extends Controller
 {
 
-
-
     public function getPayments()
     {
         $payments = Payments::with('user')->get();
