@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Admin\AyatController;
 use App\Http\Controllers\Api\Admin\AzkarController;
 use App\Http\Controllers\Api\Admin\CodeController;
 use App\Http\Controllers\Api\Admin\EmotionController;
+use App\Http\Controllers\Api\Admin\NotificationController;
 use App\Http\Controllers\Api\Admin\PaymentController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\User\PaymentController as UserPaymentController;
@@ -96,6 +97,10 @@ Route::middleware(['auth:sanctum', 'IsAdmin'])->group(function () {
     Route::get('/admin/getPayments', [PaymentController::class, 'getPayments']);
 
     Route::delete('/admin/delete/payment/{id}', [PaymentController::class, 'deletePayment']);
+
+/////////////////////////////////////////// Notifications //////////////////////////////////////////////////
+
+    Route::post('/admin/Notification/sendToUser', [NotificationController::class, 'sendToUser']);
 });
 
 
