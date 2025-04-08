@@ -36,6 +36,8 @@ Route::middleware(['auth:sanctum', 'IsAdmin'])->group(function () {
 
     Route::get('/admin/Azkar/categories', [AzkarController::class , 'getAzkarCategories']);
 
+    Route::post('/admin/Azkar/category/add', [AzkarController::class , 'addAzkarCategory']);
+
 ///////////////////////////////////////// Ad3ya /////////////////////////////////////////////////
 
     Route::get('/admin/getAd3ya',[Ad3yaController::class , 'getAd3ya']);
