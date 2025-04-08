@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::post('/notification/broadcast', [NotificationController::class, 'broadcastNotification']);
+
+
 
 
 Route::middleware(['auth:sanctum', 'IsAdmin'])->group(function () {
@@ -102,7 +105,7 @@ Route::middleware(['auth:sanctum', 'IsAdmin'])->group(function () {
 
 /////////////////////////////////////////// Notifications //////////////////////////////////////////////////
 
-    Route::post('/admin/Notification/sendToUser', [NotificationController::class, 'sendToUser']);
+    // Route::post('/admin/Notification/sendToUser', [NotificationController::class, 'sendToUser']);
 });
 
 
