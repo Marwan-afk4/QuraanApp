@@ -10,6 +10,7 @@ class AzkarCategory extends Model
 
     protected $fillable = [
         'category_name',
+        'category_name_ar'
     ];
 
     public function azkars()

@@ -95,6 +95,7 @@ class AzkarController extends Controller
     public function addAzkarCategory(Request $request){
         $validation = Validator::make($request->all(),[
             'category_name' => 'required|string|unique:azkar_categories',
+            'category_name_ar'=>'required|string|unique:azkar_categories'
         ]);
         if($validation->fails()){
             return response()->json(['errors'=>$validation->errors()]);
@@ -102,6 +103,7 @@ class AzkarController extends Controller
 
         $azkar = AzkarCategory::create([
             'category_name' => $request->category_name,
+            'category_name_ar'=>$request->category_name_ar
         ]);
 
         $data = [

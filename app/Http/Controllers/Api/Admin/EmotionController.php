@@ -32,13 +32,15 @@ class EmotionController extends Controller
     public function addEmotion(Request $request){
         $validation = Validator::make($request->all(),[
             'emotion_name' => 'required|string',
+            'emotion_name_ar' => 'required|string',
         ]);
         if($validation->fails()){
             return response()->json(['errors'=>$validation->errors()]);
         }
 
         $emotion = Emotion::create([
-            'emotion_name' => $request->emotion_name
+            'emotion_name' => $request->emotion_name,
+            'emotion_name_ar' => $request->emotion_name_ar,
         ]);
 
         $data = [
@@ -134,7 +136,7 @@ class EmotionController extends Controller
             $formattedResponse['ayat'][] = [
                 'id' => $record->ayat->id,
                 'ayat_ar' => $record->ayat->{"ayat_ar"},
-                'aya_-en' => $record->ayat->{"ayat_en"},
+                'aya_en' => $record->ayat->{"ayat_en"},
                 'status' => $record->ayat->status,
                 'note' => $record->ayat->note
             ];
