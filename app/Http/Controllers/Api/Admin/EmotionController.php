@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Emotion;
 use App\Models\EmotionAll;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -178,5 +179,24 @@ class EmotionController extends Controller
 
     return response()->json(['data'=>$formattedResponse]);
 }
+
+    public function editallLimits(Request $request){
+        $validation = Validator::make($request->all(),[
+            'limit' => 'required|integer',
+        ]);
+        if($validation->fails()){
+            return response()->json(['errors'=>$validation->errors()]);
+        }
+        $emotions = User::where('role', 'user')->get();
+        foreach ($emotions as $emotion) {
+            $emotion->update([
+                'limit' => $request->limit
+            ]);
+        }
+        $data = [
+            'message' => 'All Emotions Limits Updated Successfully to '.$request->limit,
+        ];
+        return response()->json($data);
+    }
 
 }

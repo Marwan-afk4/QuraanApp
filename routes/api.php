@@ -25,6 +25,8 @@ Route::post('/notification/broadcast', [NotificationController::class, 'broadcas
 
 Route::middleware(['auth:sanctum', 'IsAdmin'])->group(function () {
 
+    Route::put('/admin/updateLimit', [EmotionController::class, 'editallLimits']);
+
 ////////////////////////////////////////////// Azkaaaar ////////////////////////////////////////////////
 
     Route::get('/admin/getAzkar',[AzkarController::class , 'getAzkar']);
