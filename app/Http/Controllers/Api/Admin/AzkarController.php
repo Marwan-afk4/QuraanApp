@@ -22,6 +22,7 @@ class AzkarController extends Controller
 
     public function addAzkar(Request $request){
         $validation = Validator::make($request->all(),[
+            'category_id' => 'required|integer|exists:azkar_categories,id',
             'azkar_ar' => 'required|string',
             'azkar_en' => 'required|string',
             'status' => 'required|integer|in:0,1',
@@ -35,7 +36,8 @@ class AzkarController extends Controller
             'azkar_ar' => $request->azkar_ar,
             'azkar_en' => $request->azkar_en,
             'status' => (string)$request->status,
-            'note' => $request->note
+            'note' => $request->note,
+            'category_id' => $request->category_id,
         ]);
 
         $data = [
