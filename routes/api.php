@@ -27,6 +27,8 @@ Route::middleware(['auth:sanctum', 'IsAdmin'])->group(function () {
 
     Route::put('/admin/updateLimit', [EmotionController::class, 'editallLimits']);
 
+    Route::get('/admin/getUsersLimit', [EmotionController::class, 'getUsersLimit']);
+
 ////////////////////////////////////////////// Azkaaaar ////////////////////////////////////////////////
 
     Route::get('/admin/getAzkar',[AzkarController::class , 'getAzkar']);

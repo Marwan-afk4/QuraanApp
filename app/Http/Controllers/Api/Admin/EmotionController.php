@@ -199,4 +199,14 @@ class EmotionController extends Controller
         return response()->json($data);
     }
 
+    public function getUsersLimit(){
+        $users = User::where('role', 'user')->get();
+        $data = $users->map(function ($user) {
+            return [
+                'usres_limit' => $user->limit,
+            ];
+        });
+        return response()->json($data);
+    }
+
 }
