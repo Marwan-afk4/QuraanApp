@@ -9,7 +9,7 @@ class FCMHelper
 {
     public static function getAccessToken(): ?string
     {
-        $credentialsPath = storage_path('app/firebase/thadathwithquran-96bcf55492b7.json');
+        $credentialsPath = storage_path('app/firebase/quran-chat-ae0c1-3739b39ea618.json');
 
         $scopes = ['https://www.googleapis.com/auth/firebase.messaging'];
 
