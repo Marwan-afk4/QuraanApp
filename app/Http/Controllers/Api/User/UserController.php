@@ -10,6 +10,7 @@ use App\Models\Azkar;
 use App\Models\AzkarCategory;
 use App\Models\Emotion;
 use App\Models\EmotionAll;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -166,4 +167,15 @@ class UserController extends Controller
             'azkar'=>$azkar
         ];
         return response()->json($data);
-    }}
+    }
+
+    public function getUsersLimit(){
+        $users = User::where('role', 'user')->get();
+        $data = $users->map(function ($user) {
+            return [
+                'usres_limit' => $user->limit,
+            ];
+        });
+        return response()->json($data);
+    }
+}

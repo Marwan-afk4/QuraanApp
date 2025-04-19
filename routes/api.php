@@ -136,4 +136,6 @@ Route::middleware('UUIDAuth')->group(function () {
     Route::get('/user/getAzkarCategory/{category_id}', [UserController::class, 'getAzkarCategory']);
 
     Route::post('/user/addPayment', [UserPaymentController::class, 'addPayment']);
+
+    Route::get('/user/limit', [UserController::class, 'getUsersLimit']);
 });
