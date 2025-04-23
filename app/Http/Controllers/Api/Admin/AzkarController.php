@@ -27,6 +27,7 @@ class AzkarController extends Controller
             'azkar_en' => 'required|string',
             'status' => 'required|integer|in:0,1',
             'note'=>'nullable|string',
+            'azkar_count'=>'nullable|integer',
         ]);
         if($validation->fails()){
             return response()->json(['errors'=>$validation->errors()]);
@@ -38,6 +39,7 @@ class AzkarController extends Controller
             'status' => (string)$request->status,
             'note' => $request->note,
             'category_id' => $request->category_id,
+            'azkar_count'=>$request->azkar_count,
         ]);
 
         $data = [
