@@ -89,7 +89,7 @@ Route::middleware(['auth:sanctum', 'IsAdmin'])->group(function () {
 
     Route::put('/admin/EmotionAll/Update/{id}', [EmotionController::class , 'updateEmotionAll']);
 
-    Route::delete('/admin/EmotionAll/Delete/{id}', [EmotionController::class , 'deletEmotionAll']);
+    Route::delete('/admin/EmotionAll/Delete', [EmotionController::class , 'deleteEmotionAllByType']);
 
     Route::get('/admin/emotionThings/{emotion_id}', [EmotionController::class , 'getemotionthings']);
 
