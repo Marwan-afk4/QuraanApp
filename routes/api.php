@@ -37,7 +37,7 @@ Route::middleware(['auth:sanctum', 'IsAdmin'])->group(function () {
 
     Route::put('/admin/Azkar/Update/{id}',[AzkarController::class , 'UpdateAzkar']);
 
-    Route::delete('/admin/Azkar/Delete', [AzkarController::class , 'deleteAzkar']);
+    Route::delete('/admin/Azkar/Delete/{id}', [AzkarController::class , 'deleteAzkar']);
 
     Route::delete('/admin/Azkar/category/Delete/{id}', [AzkarController::class , 'deleteCategory']);
 
