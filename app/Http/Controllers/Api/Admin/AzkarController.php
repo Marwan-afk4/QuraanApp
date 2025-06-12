@@ -80,6 +80,16 @@ class AzkarController extends Controller
         return response()->json($data);
     }
 
+    public function deleteCategory($id)
+    {
+        $category = AzkarCategory::find($id);
+        $category->delete();
+        $data = [
+            'message' => 'Category Deleted Successfully',
+        ];
+        return response()->json($data);
+    }
+
     public function getAzkarCategory($category_id){
         $azkar = Azkar::where('category_id', $category_id)->get();
         $data =[
